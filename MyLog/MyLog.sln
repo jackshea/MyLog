@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLog", "MyLog\MyLog.csproj", "{4B578E6B-8269-4AC5-8BEB-D5E214F6016F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLogConsole", "MyLogConsole\MyLogConsole.csproj", "{3C3B341E-BA49-40CF-B7CD-3C5C81F4C5F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4B578E6B-8269-4AC5-8BEB-D5E214F6016F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B578E6B-8269-4AC5-8BEB-D5E214F6016F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B578E6B-8269-4AC5-8BEB-D5E214F6016F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C3B341E-BA49-40CF-B7CD-3C5C81F4C5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C3B341E-BA49-40CF-B7CD-3C5C81F4C5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C3B341E-BA49-40CF-B7CD-3C5C81F4C5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C3B341E-BA49-40CF-B7CD-3C5C81F4C5F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
