@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILog.cs" />
+    <Compile Include="CommonMsgFormater.cs" />
+    <Compile Include="IFormater.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="LogLevel.cs" />
-    <Compile Include="BaseLog.cs" />
     <Compile Include="MyLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

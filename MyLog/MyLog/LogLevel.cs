@@ -1,11 +1,13 @@
-﻿namespace YeZhStudio.Base
+﻿namespace YezhStudio.Base
 {
     public enum LogLevel
     {
+        All,
         Debug,
         Info,
         Warn,
         Error,
-        Fatal
+        Fatal,
+        None
     }
 }

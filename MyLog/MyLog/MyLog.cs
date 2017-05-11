@@ -1,50 +1,88 @@
-﻿namespace YeZhStudio.Base
+﻿using System.Collections.Generic;
+
+namespace YezhStudio.Base
 {
-    public class MyLog
+    public class MyLog : IOutput
     {
-        private static readonly BaseLog _instance = new BaseLog();
+        private static readonly MyLog instance = new MyLog();
+
+        private MyLog()
+        {
+
+        }
+
+        private static readonly List<IOutput> listeners = new List<IOutput>();
+        public static LogLevel Level { get; set; }
 
         public static void Debug(string message, string category = null)
         {
-            _instance.Debug(FormatString(message, category, LogLevel.Debug));
+            if (Level > LogLevel.Debug)
+            {
+                return;
+            }
+            instance.Output(message, category, LogLevel.Debug);
         }
 
         public static void Info(string message, string category = null)
         {
-            _instance.Info(FormatString(message, category, LogLevel.Info));
+            if (Level > LogLevel.Info)
+            {
+                return;
+            }
+            instance.Output(message, category, LogLevel.Info);
         }
 
         public static void Warn(string message, string category = null)
         {
-            _instance.Warn(FormatString(message, category, LogLevel.Warn));
+            if (Level > LogLevel.Warn)
+            {
+                return;
+            }
+            instance.Output(message, category, LogLevel.Warn);
         }
 
         public static void Error(string message, string category = null)
         {
-            _instance.Error(FormatString(message, category, LogLevel.Error));
+            if (Level > LogLevel.Error)
+            {
+                return;
+            }
+            instance.Output(message, category, LogLevel.Error);
         }
 
         public static void Fatal(string message, string category = null)
         {
-            _instance.Fatal(FormatString(message, category, LogLevel.Fatal));
+            if (Level > LogLevel.Fatal)
+            {
+                return;
+            }
+            instance.Output(message, category, LogLevel.Fatal);
         }
 
-        public static void AddListener(ILog iLog)
+        public static void Assert(bool condition, string failureMessage)
         {
-            _instance.AddListener(iLog);
+            if (!condition)
+            {
+                Error(failureMessage, "Assert");
+            }
         }
 
-        public static void RemoveListener(ILog iLog)
+        public static void AddListener(IOutput iOutput)
         {
-            _instance.RemoveListener(iLog);
+            listeners.Add(iOutput);
         }
 
-        private static string FormatString(string message, string category, LogLevel logLevel)
+        public static void RemoveListener(IOutput iOutput)
         {
-            var logLevelName = logLevel.ToString().ToUpper();
-            if (string.IsNullOrEmpty(category))
-                category = "Default";
-            return string.Format("[{2,-5}] [{1,-8}]: \"{0}\"", message, category, logLevelName);
+            listeners.Remove(iOutput);
+        }
+
+        public void Output(string message, string category, LogLevel logLevel)
+        {
+            foreach (IOutput listener in listeners)
+            {
+                listener.Output(message, category, logLevel);
+            }
         }
     }
 }

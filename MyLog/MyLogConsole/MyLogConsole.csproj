@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleLog.cs" />
-    <Compile Include="FileLog.cs" />
+    <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="FileOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
