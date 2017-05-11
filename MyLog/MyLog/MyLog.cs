@@ -6,12 +6,13 @@ namespace YezhStudio.Base
     {
         private static readonly MyLog instance = new MyLog();
 
-        private MyLog()
+        static MyLog()
         {
-
+            enableCategories.Add("Default");
         }
 
         private static readonly List<IOutput> listeners = new List<IOutput>();
+        private static readonly HashSet<string> enableCategories = new HashSet<string>();
         public static LogLevel Level { get; set; }
 
         public static void Debug(string message, string category = null)
@@ -77,8 +78,28 @@ namespace YezhStudio.Base
             listeners.Remove(iOutput);
         }
 
+        public static void AddEnableCategory(string category)
+        {
+            enableCategories.Add(category);
+        }
+
+        public static void RemoveEnableCategory(string category)
+        {
+            enableCategories.Remove(category);
+        }
+
         public void Output(string message, string category, LogLevel logLevel)
         {
+            if (string.IsNullOrEmpty(category))
+            {
+                category = "Default";
+            }
+
+            if (!enableCategories.Contains("All") && !enableCategories.Contains(category))
+            {
+                return;
+            }
+
             foreach (IOutput listener in listeners)
             {
                 listener.Output(message, category, logLevel);
