@@ -2,6 +2,6 @@
 {
     public interface IFormater
     {
-        string FormatString(string message, string category, LogLevel logLevel);
+        string FormatString(LogMessage logMessage);
     }
 }

@@ -1,14 +1,23 @@
-﻿namespace YezhStudio.Base
+﻿using System;
+
+namespace YezhStudio.Base
 {
     public class CommonMsgFormater : IFormater
     {
-        public string FormatString(string message, string category, LogLevel logLevel)
+        private readonly DateTime initTime;
+        public CommonMsgFormater()
         {
-            var logLevelName = logLevel.ToString().ToUpper();
+            initTime = DateTime.Now;
+        }
+
+        public string FormatString(LogMessage logMessage)
+        {
+            string category = logMessage.Category;
+            var logLevelName = logMessage.LogLevel.ToString().ToUpper();
             if (string.IsNullOrEmpty(category))
                 category = "Default";
 
-            return string.Format("[{2,-5}] [{1,-8}]: \"{0}\"", message, category, logLevelName);
+            return string.Format("[{3,5}|{2,-5}|{1,-8}]: \"{0}\"", logMessage.Message, category, logLevelName, (logMessage.Time - initTime).TotalMilliseconds);
         }
     }
 }

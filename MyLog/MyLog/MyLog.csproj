@@ -43,8 +43,10 @@
     <Compile Include="CommonMsgFormater.cs" />
     <Compile Include="IFormater.cs" />
     <Compile Include="IOutput.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="LogLevel.cs" />
-    <Compile Include="MyLog.cs" />
+    <Compile Include="LogManager.cs" />
+    <Compile Include="LogMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

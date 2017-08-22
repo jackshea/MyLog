@@ -1,7 +1,9 @@
-﻿namespace YezhStudio.Base
+﻿using System;
+
+namespace YezhStudio.Base
 {
     public interface IOutput
     {
-        void Output(string message, string category, LogLevel logLevel);
+        void Output(LogMessage logMessage);
     }
 }
